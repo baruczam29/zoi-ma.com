@@ -1,0 +1,8 @@
+<svg viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg">
+  <!-- Icon: Leaf-O standalone con tallo -->
+  <circle cx="50" cy="55" r="30" fill="none" stroke="#5B7553" stroke-width="5"/>
+  <path d="M50 25 C63 25 74 36 74 49 C74 62 63 73 50 73" fill="#5B7553" opacity="0.3"/>
+  <path d="M47 28 Q67 42 54 72" fill="none" stroke="#5B7553" stroke-width="2.8" stroke-linecap="round"/>
+  <!-- Tallo -->
+  <path d="M48 25 Q44 16 50 12" fill="none" stroke="#5B7553" stroke-width="3" stroke-linecap="round"/>
+</svg>

@@ -15,576 +15,21 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-:root {
-  --verde: #5B7553;
-  --verde-claro: #8DB580;
-  --crema: #F0EDE7;
-  --terracota: #C47D5A;
-  --carbon: #3D3229;
-  --hoja: #8DB580;
-  --blanco: #FAFAF5;
-  --dorado: #C4A882;
-  --gris-suave: #8A7B6B;
-  --font-display: 'Quicksand', sans-serif;
-  --font-body: 'Inter', sans-serif;
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: var(--font-body);
-  color: var(--carbon);
-  background: var(--blanco);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
-
-img, svg { display: block; max-width: 100%; }
-
-a { color: inherit; text-decoration: none; }
-
-.container {
-  width: 100%;
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 0 16px;
-}
-
-/* NAV */
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  background: rgba(250, 250, 245, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(61, 50, 41, 0.06);
-  transition: box-shadow 0.3s ease-out;
-}
-
-nav.scrolled {
-  box-shadow: 0 1px 8px rgba(61, 50, 41, 0.08);
-}
-
-nav .container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 64px;
-}
-
-nav .logo-nav {
-  height: 32px;
-  width: auto;
-}
-
-nav .nav-links {
-  display: flex;
-  gap: 28px;
-  list-style: none;
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 14px;
-}
-
-nav .nav-links a {
-  color: var(--gris-suave);
-  transition: color 0.2s ease-out;
-}
-
-nav .nav-links a:hover { color: var(--verde); }
-
-nav .nav-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--verde);
-  color: var(--blanco);
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 14px;
-  padding: 8px 20px;
-  border-radius: 8px;
-  transition: background 0.2s ease-out;
-}
-
-nav .nav-cta:hover { background: #4a6344; }
-
-.hamburger {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-}
-
-.hamburger span {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background: var(--carbon);
-  margin: 5px 0;
-  transition: transform 0.3s ease-out, opacity 0.2s ease-out;
-}
-
-/* HERO */
-.hero {
-  padding: 140px 0 80px;
-  background: var(--crema);
-  text-align: center;
-}
-
-.hero-logo {
-  width: 240px;
-  margin: 0 auto 32px;
-}
-
-.hero h1 {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  color: var(--carbon);
-  line-height: 1.2;
-  max-width: 560px;
-  margin: 0 auto 16px;
-}
-
-.hero p {
-  font-size: clamp(1rem, 2vw, 1.125rem);
-  color: var(--gris-suave);
-  max-width: 480px;
-  margin: 0 auto 40px;
-  line-height: 1.7;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--verde);
-  color: var(--blanco);
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 16px;
-  padding: 14px 32px;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s ease-out, transform 0.15s ease-out;
-}
-
-.btn-primary:hover { background: #4a6344; transform: translateY(-1px); }
-
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: transparent;
-  color: var(--verde);
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 16px;
-  padding: 14px 32px;
-  border-radius: 10px;
-  border: 2px solid var(--verde);
-  cursor: pointer;
-  transition: background 0.2s ease-out, color 0.2s ease-out;
-}
-
-.btn-secondary:hover {
-  background: var(--verde);
-  color: var(--blanco);
-}
-
-/* PRODUCTOS */
-.productos {
-  padding: 80px 0;
-}
-
-.section-label {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 2.5px;
-  color: var(--verde);
-  margin-bottom: 12px;
-}
-
-.section-title {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(1.5rem, 3.5vw, 2rem);
-  color: var(--carbon);
-  line-height: 1.25;
-  margin-bottom: 12px;
-}
-
-.section-desc {
-  color: var(--gris-suave);
-  font-size: 1rem;
-  max-width: 520px;
-  margin-bottom: 48px;
-  line-height: 1.7;
-}
-
-.productos-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-}
-
-.producto {
-  display: flex;
-  align-items: flex-start;
-  gap: 20px;
-  padding: 28px;
-  background: var(--crema);
-  border-radius: 14px;
-  transition: transform 0.2s ease-out;
-}
-
-.producto:hover { transform: translateY(-2px); }
-
-.producto-icono {
-  flex-shrink: 0;
-  width: 56px;
-  height: 56px;
-  background: var(--verde);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.producto-icono svg {
-  width: 28px;
-  height: 28px;
-  fill: none;
-  stroke: var(--blanco);
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.producto h3 {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.125rem;
-  margin-bottom: 6px;
-}
-
-.producto p {
-  color: var(--gris-suave);
-  font-size: 0.9rem;
-  line-height: 1.6;
-}
-
-.producto .precio {
-  display: inline-block;
-  margin-top: 10px;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1rem;
-  color: var(--verde);
-}
-
-/* BENEFICIOS */
-.beneficios {
-  padding: 80px 0;
-  background: var(--carbon);
-  color: var(--blanco);
-}
-
-.beneficios .section-label { color: var(--hoja); }
-.beneficios .section-title { color: var(--blanco); }
-.beneficios .section-desc { color: var(--dorado); }
-
-.beneficios-lista {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 32px;
-  counter-reset: beneficio;
-}
-
-.beneficio {
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
-  counter-increment: beneficio;
-}
-
-.beneficio-num {
-  flex-shrink: 0;
-  width: 44px;
-  height: 44px;
-  border: 2px solid var(--verde);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1rem;
-  color: var(--hoja);
-}
-
-.beneficio h3 {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1rem;
-  margin-bottom: 4px;
-  color: var(--blanco);
-}
-
-.beneficio p {
-  font-size: 0.9rem;
-  color: var(--dorado);
-  line-height: 1.6;
-}
-
-/* NOSOTROS */
-.nosotros {
-  padding: 80px 0;
-}
-
-.nosotros-content {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 40px;
-  align-items: center;
-}
-
-.nosotros-texto h2 {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(1.5rem, 3.5vw, 2rem);
-  color: var(--carbon);
-  line-height: 1.25;
-  margin-bottom: 16px;
-}
-
-.nosotros-texto p {
-  color: var(--gris-suave);
-  font-size: 1rem;
-  line-height: 1.7;
-  margin-bottom: 12px;
-}
-
-.nosotros-visual {
-  background: var(--crema);
-  border-radius: 20px;
-  padding: 48px 32px;
-  text-align: center;
-}
-
-.nosotros-visual .leaf-icon {
-  width: 80px;
-  height: 80px;
-  margin: 0 auto 20px;
-}
-
-.nosotros-visual blockquote {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1.25rem;
-  color: var(--carbon);
-  line-height: 1.4;
-  max-width: 340px;
-  margin: 0 auto;
-}
-
-/* CONTACTO */
-.contacto {
-  padding: 80px 0;
-  background: var(--crema);
-  text-align: center;
-}
-
-.contacto .section-title {
-  margin-bottom: 8px;
-}
-
-.contacto .section-desc {
-  margin: 0 auto 40px;
-  text-align: center;
-}
-
-.contacto-acciones {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 48px;
-}
-
-.btn-whatsapp {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: #25D366;
-  color: #fff;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 16px;
-  padding: 14px 32px;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s ease-out, transform 0.15s ease-out;
-}
-
-.btn-whatsapp:hover { background: #1fb855; transform: translateY(-1px); }
-
-.btn-whatsapp svg {
-  width: 22px;
-  height: 22px;
-  fill: #fff;
-}
-
-.redes {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-}
-
-.redes a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--carbon);
-  color: var(--blanco);
-  transition: background 0.2s ease-out, transform 0.15s ease-out;
-}
-
-.redes a:hover { background: var(--verde); transform: translateY(-2px); }
-
-.redes a svg {
-  width: 20px;
-  height: 20px;
-  fill: currentColor;
-}
-
-/* FOOTER */
-footer {
-  padding: 32px 0;
-  background: var(--carbon);
-  text-align: center;
-}
-
-footer .footer-logo {
-  width: 100px;
-  margin: 0 auto 12px;
-}
-
-footer p {
-  font-size: 0.8rem;
-  color: var(--dorado);
-}
-
-/* WHATSAPP FLOTANTE */
-.whatsapp-float {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 90;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: #25D366;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
-  transition: transform 0.2s ease-out;
-}
-
-.whatsapp-float:hover { transform: scale(1.08); }
-
-.whatsapp-float svg {
-  width: 28px;
-  height: 28px;
-  fill: #fff;
-}
-
-/* RESPONSIVE */
-@media (min-width: 640px) {
-  .productos-grid { grid-template-columns: repeat(2, 1fr); }
-  .beneficios-lista { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (min-width: 768px) {
-  .container { padding: 0 32px; }
-  .nosotros-content { grid-template-columns: 1fr 1fr; }
-}
-
-@media (min-width: 1024px) {
-  .hero { padding: 160px 0 100px; }
-  .hero-logo { width: 280px; }
-  .productos { padding: 100px 0; }
-  .beneficios { padding: 100px 0; }
-  .nosotros { padding: 100px 0; }
-  .contacto { padding: 100px 0; }
-}
-
-@media (max-width: 639px) {
-  nav .nav-links { display: none; }
-  .hamburger { display: block; }
-
-  nav.open .nav-links {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 64px;
-    left: 0;
-    right: 0;
-    background: var(--blanco);
-    padding: 20px 16px;
-    border-bottom: 1px solid rgba(61, 50, 41, 0.08);
-    gap: 16px;
-  }
-
-  nav .nav-cta { display: none; }
-}
-
-/* MOBILE NAV TOGGLE */
-nav.open .hamburger span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-nav.open .hamburger span:nth-child(2) { opacity: 0; }
-nav.open .hamburger span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <!-- NAV -->
 <nav id="nav">
   <div class="container">
-    <img src="assets/logo-completo-claro.svg" alt="Zoima" class="logo-nav">
+    <a href="index.html"><img src="assets/logo-completo-claro.svg" alt="Zoima" class="logo-nav"></a>
     <ul class="nav-links">
-      <li><a href="#productos">Productos</a></li>
-      <li><a href="#beneficios">Beneficios</a></li>
-      <li><a href="#nosotros">Nosotros</a></li>
-      <li><a href="#contacto">Contacto</a></li>
+      <li><a href="index.html" class="active">Inicio</a></li>
+      <li><a href="productos.html">Productos</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
     </ul>
-    <a href="#contacto" class="nav-cta">
+    <a href="https://wa.me/584120000000?text=Hola%20Zoima!" class="nav-cta" target="_blank" rel="noopener">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
       Contactar
     </a>
@@ -595,187 +40,217 @@ nav.open .hamburger span:nth-child(3) {
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="page-hero">
   <div class="container">
-    <img src="assets/logo-completo-claro.svg" alt="Zoima - Bienestar Animal" class="hero-logo">
-    <h1>Nutricion real para quien te da amor incondicional</h1>
-    <p>Alimento premium para perros en Venezuela. Porque su bienestar empieza por lo que come.</p>
-    <div class="hero-actions">
-      <a href="#contacto" class="btn-primary">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-        Ver productos
-      </a>
-      <a href="#nosotros" class="btn-secondary">Conocer Zoima</a>
+    <div class="page-hero-text">
+      <p class="section-label">Bienestar animal</p>
+      <h1>Nutricion real para quien te da amor incondicional</h1>
+      <p>Alimento premium para perros en Venezuela. Porque su bienestar empieza por lo que come.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="productos.html" class="btn btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          Ver productos
+        </a>
+        <a href="nosotros.html" class="btn btn-secondary">Conocer Zoima</a>
+      </div>
+    </div>
+    <div class="page-hero-image">
+      <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800&q=80&fit=crop" alt="Perro feliz y saludable" loading="eager">
     </div>
   </div>
 </section>
 
-<!-- PRODUCTOS -->
-<section class="productos" id="productos">
+<!-- HIGHLIGHTS -->
+<section class="section">
   <div class="container">
-    <p class="section-label">Productos</p>
-    <h2 class="section-title">Alimento que nutre de verdad</h2>
-    <p class="section-desc">Seleccionamos las mejores marcas de alimento premium para que tu mascota reciba la nutricion que merece.</p>
-    <div class="productos-grid">
-
-      <div class="producto">
-        <div class="producto-icono">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v2m0 18v2m-9-11h2m18 0h2m-4.22-6.78l-1.42 1.42M6.34 17.66l-1.42 1.42m0-14.14l1.42 1.42m11.32 11.32l1.42 1.42"/></svg>
-        </div>
-        <div>
-          <h3>Alimento Premium Adulto</h3>
-          <p>Formula balanceada con proteina animal de alta calidad. Piel sana, pelo brillante, energia constante.</p>
-          <span class="precio">Consultar precio</span>
-        </div>
-      </div>
-
-      <div class="producto">
-        <div class="producto-icono">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-        </div>
-        <div>
-          <h3>Alimento Premium Cachorro</h3>
-          <p>Nutrientes esenciales para el crecimiento. DHA para desarrollo cerebral, calcio para huesos fuertes.</p>
-          <span class="precio">Consultar precio</span>
-        </div>
-      </div>
-
-      <div class="producto">
-        <div class="producto-icono">
+    <div class="features-grid" style="max-width:900px">
+      <div class="feature-card">
+        <div class="feature-icon">
           <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
         <div>
-          <h3>Alimento Razas Pequeñas</h3>
-          <p>Croquetas de tamaño reducido con mayor concentracion energetica. Ideal para razas toy y miniatura.</p>
-          <span class="precio">Consultar precio</span>
-        </div>
-      </div>
-
-      <div class="producto">
-        <div class="producto-icono">
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-        </div>
-        <div>
-          <h3>Snacks y Premios</h3>
-          <p>Recompensas saludables sin colorantes artificiales. Perfectos para entrenamiento y momentos especiales.</p>
-          <span class="precio">Consultar precio</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- BENEFICIOS -->
-<section class="beneficios" id="beneficios">
-  <div class="container">
-    <p class="section-label">Por que Zoima</p>
-    <h2 class="section-title">Tu mascota merece lo mejor</h2>
-    <p class="section-desc">No vendemos cualquier alimento. Seleccionamos marcas que cumplen estandares de nutricion real.</p>
-    <div class="beneficios-lista">
-
-      <div class="beneficio">
-        <div class="beneficio-num">1</div>
-        <div>
           <h3>Ingredientes reales</h3>
-          <p>Proteina animal como primer ingrediente. Sin rellenos de soya ni subproductos de baja calidad.</p>
+          <p>Proteina animal como primer ingrediente. Sin rellenos ni subproductos de baja calidad.</p>
         </div>
       </div>
-
-      <div class="beneficio">
-        <div class="beneficio-num">2</div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
         <div>
           <h3>Envio a todo el pais</h3>
-          <p>Despacho por MercadoEnvios y coordinacion directa. Tu pedido llega a donde estes.</p>
+          <p>Despacho por MercadoEnvios y coordinacion directa a donde estes.</p>
         </div>
       </div>
-
-      <div class="beneficio">
-        <div class="beneficio-num">3</div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        </div>
         <div>
           <h3>Precios justos</h3>
-          <p>Sin intermediarios innecesarios. Trabajamos directo con distribuidores para darte el mejor precio.</p>
+          <p>Directo de distribuidores autorizados. Sin intermediarios innecesarios.</p>
         </div>
       </div>
-
-      <div class="beneficio">
-        <div class="beneficio-num">4</div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
         <div>
           <h3>Asesoria personalizada</h3>
-          <p>Te ayudamos a elegir el alimento correcto segun la raza, edad y condicion de tu mascota.</p>
+          <p>Te ayudamos a elegir segun la raza, edad y condicion de tu mascota.</p>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- NOSOTROS -->
-<section class="nosotros" id="nosotros">
+<!-- PRODUCTOS DESTACADOS -->
+<section class="section section-cream">
   <div class="container">
-    <div class="nosotros-content">
-      <div class="nosotros-texto">
-        <p class="section-label">Nuestra historia</p>
+    <p class="section-label">Productos destacados</p>
+    <h2 class="section-title">Alimento que nutre de verdad</h2>
+    <p class="section-desc">Seleccionamos marcas premium que cumplen estandares de nutricion real. Cada producto pasa nuestra revision.</p>
+    <div class="products-grid" style="max-width:900px">
+
+      <a href="https://wa.me/584120000000?text=Hola%20Zoima!%20Me%20interesa%20el%20Alimento%20Premium%20Adulto%2015kg.%20%C2%BFTienen%20disponible?" class="product-card" target="_blank" rel="noopener">
+        <div class="product-card-image">
+          <div class="product-card-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v2m0 18v2m-9-11h2m18 0h2m-4.22-6.78l-1.42 1.42M6.34 17.66l-1.42 1.42m0-14.14l1.42 1.42m11.32 11.32l1.42 1.42"/></svg>
+          </div>
+          <span class="product-badge">15 kg</span>
+        </div>
+        <div class="product-card-body">
+          <h3>Premium Adulto</h3>
+          <p>Formula balanceada con proteina de pollo. Piel sana, pelo brillante, energia constante.</p>
+          <div class="product-card-footer">
+            <span class="product-price">Consultar</span>
+            <span class="btn btn-whatsapp btn-sm">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Pedir
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://wa.me/584120000000?text=Hola%20Zoima!%20Me%20interesa%20el%20Alimento%20Premium%20Cachorro%208kg.%20%C2%BFTienen%20disponible?" class="product-card" target="_blank" rel="noopener">
+        <div class="product-card-image">
+          <div class="product-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          </div>
+          <span class="product-badge">8 kg</span>
+        </div>
+        <div class="product-card-body">
+          <h3>Premium Cachorro</h3>
+          <p>DHA para desarrollo cerebral, calcio para huesos fuertes. Todo lo que necesita para crecer sano.</p>
+          <div class="product-card-footer">
+            <span class="product-price">Consultar</span>
+            <span class="btn btn-whatsapp btn-sm">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Pedir
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://wa.me/584120000000?text=Hola%20Zoima!%20Me%20interesa%20el%20Alimento%20Razas%20Peque%C3%B1as%204kg.%20%C2%BFTienen%20disponible?" class="product-card" target="_blank" rel="noopener">
+        <div class="product-card-image">
+          <div class="product-card-icon">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
+          </div>
+          <span class="product-badge">4 kg</span>
+        </div>
+        <div class="product-card-body">
+          <h3>Razas Pequeñas</h3>
+          <p>Croquetas de tamaño reducido con mayor concentracion energetica. Ideal para razas toy y miniatura.</p>
+          <div class="product-card-footer">
+            <span class="product-price">Consultar</span>
+            <span class="btn btn-whatsapp btn-sm">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Pedir
+            </span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+    <div style="text-align:center;margin-top:40px">
+      <a href="productos.html" class="btn btn-primary">Ver todo el catalogo</a>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND STORY SPLIT -->
+<section class="section">
+  <div class="container">
+    <div class="split">
+      <div class="split-image">
+        <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=800&q=80&fit=crop" alt="Perros corriendo felices" loading="lazy">
+      </div>
+      <div class="split-text">
+        <p class="section-label">Nuestra mision</p>
         <h2>Nacio de querer algo mejor</h2>
         <p>Zoima nace en Venezuela de una pregunta simple: por que es tan dificil conseguir alimento de calidad para nuestras mascotas?</p>
-        <p>Somos un equipo pequeño con una mision clara: hacer accesible la nutricion premium para perros. Empezamos con alimento, pero nuestra vision va mas alla: bienestar completo para animales de compañia.</p>
-        <p>Cada producto que ofrecemos pasa por nuestra revision. Si no se lo dariamos a nuestros propios perros, no te lo vendemos a ti.</p>
-      </div>
-      <div class="nosotros-visual">
-        <svg class="leaf-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="50" cy="50" r="30" fill="none" stroke="#5B7553" stroke-width="4"/>
-          <path d="M50 20 C68 20 80 32 80 50 C80 68 68 80 50 80" fill="#5B7553" opacity="0.2"/>
-          <path d="M46 26 Q72 46 54 76" fill="none" stroke="#5B7553" stroke-width="2.5" stroke-linecap="round"/>
-        </svg>
+        <p>Si no se lo dariamos a nuestros propios perros, no te lo vendemos a ti.</p>
         <blockquote>Zoi es vida. Ma es calidez. Zoima es bienestar animal.</blockquote>
+        <div style="margin-top:28px">
+          <a href="nosotros.html" class="btn btn-secondary">Nuestra historia</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACTO -->
-<section class="contacto" id="contacto">
+<!-- CTA BANNER -->
+<section class="cta-banner">
   <div class="container">
-    <p class="section-label">Contacto</p>
-    <h2 class="section-title">Hablemos de tu mascota</h2>
-    <p class="section-desc">Escribenos por WhatsApp para pedidos, consultas o asesoria sobre el alimento ideal para tu compañero.</p>
-    <div class="contacto-acciones">
-      <a href="https://wa.me/584120000000?text=Hola%20Zoima!%20Me%20interesa%20saber%20sobre%20su%20alimento%20premium" class="btn-whatsapp" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Escribir por WhatsApp
-      </a>
-      <a href="#" class="btn-primary" id="ml-link">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-        Ver en MercadoLibre
-      </a>
-    </div>
-    <div class="redes">
-      <a href="#" aria-label="Instagram" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
-      </a>
-      <a href="#" aria-label="TikTok" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.12V9a6.27 6.27 0 00-.79-.05A6.34 6.34 0 003.15 15.3a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.53v-3.4a4.85 4.85 0 01-.19-5.31z" fill="currentColor"/></svg>
-      </a>
-      <a href="#" aria-label="Facebook" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-      <a href="#" aria-label="X / Twitter" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="currentColor"/></svg>
-      </a>
-    </div>
+    <h2>Tu mascota merece lo mejor</h2>
+    <p>Escribenos por WhatsApp y te asesoramos gratis sobre el alimento ideal.</p>
+    <a href="https://wa.me/584120000000?text=Hola%20Zoima!%20Necesito%20asesoria%20para%20el%20alimento%20de%20mi%20mascota." class="btn" target="_blank" rel="noopener">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Hablar por WhatsApp
+    </a>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <div class="container">
-    <img src="assets/logo-completo-oscuro.svg" alt="Zoima" class="footer-logo">
-    <p>Zoima &copy; 2026. Bienestar animal, desde Venezuela.</p>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/logo-completo-oscuro.svg" alt="Zoima" class="footer-logo">
+        <p>Nutricion premium para mascotas, desde Venezuela. Bienestar real para tu compañero.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Paginas</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Redes</h4>
+        <ul>
+          <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="#" target="_blank" rel="noopener">TikTok</a></li>
+          <li><a href="#" target="_blank" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Zoima &copy; 2026. Bienestar animal, desde Venezuela.</p>
+      <div class="redes">
+        <a href="#" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="TikTok" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.12V9a6.27 6.27 0 00-.79-.05A6.34 6.34 0 003.15 15.3a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.53v-3.4a4.85 4.85 0 01-.19-5.31z" fill="currentColor"/></svg></a>
+        <a href="#" aria-label="Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
   </div>
 </footer>
 
-<!-- WHATSAPP FLOTANTE -->
-<a href="https://wa.me/584120000000?text=Hola%20Zoima!%20Me%20interesa%20saber%20sobre%20su%20alimento%20premium" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/584120000000?text=Hola%20Zoima!" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 

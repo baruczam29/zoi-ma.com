@@ -595,9 +595,18 @@ footer {
   font-size: 0.85rem;
   color: var(--dorado);
   transition: color var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .footer-links a:hover { color: var(--blanco); }
+
+.footer-links a svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
 
 .footer-bottom {
   border-top: 1px solid rgba(250, 250, 245, 0.08);
